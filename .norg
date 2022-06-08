@@ -1,0 +1,64 @@
+* TODO
+  - [x] Create tool for list visualisation
+
+* Sorting algorithms 
+** Exchange sorts
+   - [x] Exchange
+   - [x] Bubble
+   - [x] Odd-even
+   - [ ] Cocktail-Shaker
+   - [ ] Comb
+   - [ ] Gnome
+   - [ ] Proportion extend sort
+   - [ ] Quick
+   - [ ] Slow
+   - [ ] Stooge
+   - [ ] Bogosort
+** Selection sort
+   - [ ] Selection
+   - [ ] Heap
+   - [ ] Smooth
+   - [ ] Cartesian tree
+   - [ ] Tournament
+   - [ ] Cycle
+   - [ ] Weak-heap
+** Insertion sort
+   - [ ] Insertion
+   - [ ] Shell
+   - [ ] Splaysort
+   - [ ] Tree 
+   - [ ] Library
+   - [ ] Patientce
+** Merge sort
+   - [ ] Merge
+   - [ ] Cascade
+   - [ ] Oscillating
+   - [ ] Polyphase
+** Distribution sorts	
+   - [ ] American flag
+   - [ ] Bead 
+   - [ ] Bucket
+   - [ ] Burt
+   - [ ] Counting
+   - [ ] Interpolation
+   - [ ] Pigeonhole
+   - [ ] Proxmap
+   - [ ] Radix
+   - [ ] Flash
+** Concurrent sort
+   - [ ] Bitonic
+   - [ ] Batcher odd-even
+   - [ ] Pairwase
+   - [ ] Sample
+** Hybrid sort
+   - [ ] Block merge
+   - [ ] Kirkpatrick–Reisch
+   - [ ] Timsortng
+   - [ ] Introsort
+   - [ ] Spread
+   - [ ] Merge-insertion
+** Other
+   - [ ] Topological
+   - [ ] Pancake
+   - [ ] Spaghetti
+
