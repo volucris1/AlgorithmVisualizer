@@ -7,13 +7,12 @@ pub fn sort(vec: &mut Vec<i32>, canvas: &mut Canvas, data_w: u32) {
     let mut l = 1;
     let mut r = vec.len() - 1;
 
-    let mut was_swapped = true;
-    'main: loop {
+    loop {
         utils::canvas_draw!(canvas, {
             canvas.draw_vec(vec, data_w);
         });
 
-        was_swapped = false;
+        let mut was_swapped = false;
         for i in l..r {
             if vec[i] > vec[i + 1] {
                 vec.swap(i, i + 1);
@@ -22,7 +21,7 @@ pub fn sort(vec: &mut Vec<i32>, canvas: &mut Canvas, data_w: u32) {
         }
         r -= 1;
         if !was_swapped {
-            break 'main;
+            break;
         }
 
         was_swapped = false;
@@ -35,7 +34,7 @@ pub fn sort(vec: &mut Vec<i32>, canvas: &mut Canvas, data_w: u32) {
         }
 
         if !was_swapped {
-            break 'main;
+            break;
         }
 
         l += 1;
