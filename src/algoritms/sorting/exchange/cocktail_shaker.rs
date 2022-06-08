@@ -4,16 +4,15 @@ use crate::{
 };
 
 pub fn sort(vec: &mut Vec<i32>, canvas: &mut Canvas, data_w: u32) {
-    let mut l = 1;
+    let mut l = 0;
     let mut r = vec.len() - 1;
 
-    loop {
-        utils::canvas_draw!(canvas, {
-            canvas.draw_vec(vec, data_w);
-        });
-
+    while canvas.running() {
         let mut was_swapped = false;
         for i in l..r {
+            utils::canvas_draw!(canvas, {
+                canvas.draw_vec(vec, data_w, vec![i]);
+            });
             if vec[i] > vec[i + 1] {
                 vec.swap(i, i + 1);
                 was_swapped = true;
@@ -26,8 +25,10 @@ pub fn sort(vec: &mut Vec<i32>, canvas: &mut Canvas, data_w: u32) {
 
         was_swapped = false;
         for i in (l..r).rev() {
+            utils::canvas_draw!(canvas, {
+                canvas.draw_vec(vec, data_w, vec![i]);
+            });
             if vec[i] > vec[i + 1] {
-                println!("{i}");
                 vec.swap(i, i + 1);
                 was_swapped = true;
             }

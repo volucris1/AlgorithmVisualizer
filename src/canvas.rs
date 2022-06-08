@@ -7,13 +7,14 @@ use sdl2::{
     event::Event,
     keyboard::Keycode,
     pixels::Color,
+    rect::Rect,
     render,
     video,
     EventPump,
 };
 
 use crate::{
-    algoritms:: sorting,
+    algoritms::sorting,
     utils,
 };
 
@@ -57,7 +58,7 @@ impl Canvas {
     pub fn run(&mut self) {
         self.running = true;
 
-        let vec = utils::generate_vec(self.width(), 0, self.height() as i32);
+        let vec = utils::generate_vec(100, 0, self.height() as i32);
 
         let mut data_w = self.width() / (vec.len() as u32);
 
@@ -65,7 +66,7 @@ impl Canvas {
             data_w = 1;
         }
 
-        utils::time_execution!("Cocktail-shaker sort", {
+        utils::time_execution!("Comb sort", {
             let mut vec_clone = vec.clone();
             sorting::exchange::cocktail_shaker::sort(&mut vec_clone, self, data_w)
         });
@@ -110,17 +111,17 @@ impl Canvas {
         self.canvas.set_draw_color(prev_color);
     }
 
-    pub fn draw_filled_rect(&mut self, rect: sdl2::rect::Rect) {
+    pub fn draw_filled_rect(&mut self, rect: sdl2::rect::Rect, color: Color) {
         let prev_color = self.canvas.draw_color();
 
-        self.canvas.set_draw_color(self.data_color);
+        self.canvas.set_draw_color(color);
         self.canvas.draw_rect(rect).unwrap();
         self.canvas.fill_rect(rect).unwrap();
 
         self.canvas.set_draw_color(prev_color);
     }
 
-    pub fn draw_vec(&mut self, vec: &Vec<i32>, width: u32) {
+    pub fn draw_vec(&mut self, vec: &Vec<i32>, width: u32, hl: Vec<usize>) {
         let y = self.height() as i32;
 
         for (i, v) in vec.iter().enumerate() {
@@ -128,8 +129,13 @@ impl Canvas {
 
             let height = v.clone() as u32;
 
-            let rect = sdl2::rect::Rect::new(x, y - (height as i32), width, height);
-            self.draw_filled_rect(rect);
+            if hl.contains(&i) {
+                let rect = sdl2::rect::Rect::new(x, y - (height as i32), width, height);
+                self.draw_filled_rect(rect, Color::RGB(0, 0, 255));
+            } else {
+                let rect = sdl2::rect::Rect::new(x, y - (height as i32), width, height);
+                self.draw_filled_rect(rect, Color::RGB(0, 0, 0));
+            }
         }
     }
 
